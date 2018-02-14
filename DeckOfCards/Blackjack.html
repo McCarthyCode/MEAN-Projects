@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blackjack</title>
+    <style>
+    * {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+        background-image: url("https://photos.gograph.com/thumbs/CSP/CSP728/green-worn-poker-or-pool-table-felt-drawing_k17805331.jpg");
+    }
+    .cards {
+        display: block;
+    }
+    .cards > * {
+        display: inline-block;
+    }
+    </style>
+    <script src="Card.js"></script>
+    <script src="Deck.js"></script>
+    <script src="Player.js"></script>
+</head>
+<body>
+    <h3>Dealer's Hand</h3>
+    <div id="dealerCards" class="cards"></div>
+    <h3>Your Hand</h3>
+    <div id="playerCards" class="cards"></div>
+    <button onclick="hit()">Hit</button>
+    <button onclick="stay()">Stay</button>
+    <button onclick="location.reload()">Reset</button>
+    <script>
+        var deck = new Deck();
+        var dealer = new Player("Dealer");
+        var player = new Player("Matt");
+
+        player.take(deck.deal());
+        dealer.take(deck.deal());
+        player.take(deck.deal());
+        dealer.take(deck.deal());
+
+        var dealerFaceUp = document.createElement("img");
+        var dealerFaceDown = document.createElement("img");
+        dealerFaceUp.setAttribute("src", `cards-png/${dealer.hand[1].suit}${dealer.hand[1].rank}.png`);
+        dealerFaceDown.setAttribute("src", "cards-png/b2pr.png");
+        document.getElementById("dealerCards").appendChild(dealerFaceUp);
+        document.getElementById("dealerCards").appendChild(dealerFaceDown);
+
+        var playerFirstCard = document.createElement("img");
+        var playerSecondCard = document.createElement("img");
+        playerFirstCard.setAttribute("src", `cards-png/${player.hand[0].suit}${player.hand[0].rank}.png`);
+        playerSecondCard.setAttribute("src", `cards-png/${player.hand[1].suit}${player.hand[1].rank}.png`);
+        document.getElementById("playerCards").appendChild(playerFirstCard);
+        document.getElementById("playerCards").appendChild(playerSecondCard);
+
+        function hit() {
+            player.take(deck.deal());
+            var card = document.createElement("img");
+            var index = player.hand.length - 1;
+            card.setAttribute("src", `cards-png/${player.hand[index].suit}${player.hand[index].rank}.png`);
+            document.getElementById("playerCards").appendChild(card);
+        }
+
+        function stay() {
+            var dealerTotal = 0;
+            dealer.hand.forEach(element => {
+                dealerTotal += element.value;
+            });
+            while (dealerTotal < 17) {
+                dealer.take(deck.deal());
+                dealer.hand.forEach(element => {
+                    dealerTotal += element.value;
+                });
+            }
+
+            document.getElementById("dealerCards").innerHTML = "";
+            for (var i in dealer.hand) {
+                var card = document.createElement("img");
+                card.setAttribute("src", `cards-png/${dealer.hand[i].suit}${dealer.hand[i].rank}.png`);
+                document.getElementById("dealerCards").appendChild(card);
+            }
+        }
+
+        var endGame = false;
+        while (!endGame) {
+            endGame = true;
+        }
+    </script>
+</body>
+</html>

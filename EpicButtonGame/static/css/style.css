@@ -1,0 +1,14 @@
+* {
+    text-align: center;
+}
+.epic {
+    padding: 50px;
+    border-radius: 25px;
+    font-size: 2em;
+}
+.reset {
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+    text-align: right;
+}

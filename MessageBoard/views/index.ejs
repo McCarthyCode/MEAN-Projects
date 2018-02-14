@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Message Board</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' />
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-faded">
+        <div class="container">
+            <h1 class="navbar-brand mb-0">The Dojo Message Board</h1>
+        </div>
+    </nav>
+    <div class="container">
+        <% if (errors) { %>
+            <% for (var i in errors) { %>
+        <div class="alert alert-danger mt-15px">
+            <%= errors[i] %>
+        </div>
+            <% } %>
+        <% } %>
+        <form action="/message" method="POST">
+            <input type="text" name="name" placeholder="Name" class="form-control mt-15px">
+            <textarea name="text" rows="5" placeholder="Write a message." class="form-control mt-15px"></textarea>
+            <input type="submit" class="btn btn-primary float-right mt-15px">
+        </form>
+        <div class="messages">
+        <% for (var i in messages) { %>
+            <div class="mt-15px">
+                <h5>Name: <%= messages[i].name %></h5>
+                <p>Message: <%= messages[i].text %></p>
+                <div class="comments">
+                <% var comments = messages[i].comments %>
+                <% for (var j = 0; j < comments.length; j++) { %>
+                    <div class="mt-15px">
+                        <h5>Name: <%= comments[j].name %></h5>
+                        <p>Message: <%= comments[j].text %></p>
+                    </div>
+                <% } %>
+                </div>
+                <form action="/comments/<%= messages[i]._id %>" method="POST">
+                    <input type="text" name="name" placeholder="Name" class="form-control mt-15px">
+                    <textarea name="text" rows="5" placeholder="Write a comment." class="form-control mt-15px"></textarea>
+                    <input type="submit" class="btn btn-primary float-right mt-15px">
+                </form>
+            </div>
+        <% } %>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey Form Revisited</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".alert").hide();
+            var socket = io.connect();
+
+            $("input[type=submit]").click(function () {
+                socket.emit('submit', {
+                    name: $("#name").val(),
+                    location: $("#location").val(),
+                    language: $("#language").val(),
+                    comment: $("#comment").val()
+                });
+            });
+
+            socket.on("alert", function(data) {
+                $(".alert").html(data);
+                $(".alert").show();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="alert alert-success"></div>
+        <label for="name">Name</label>
+        <input id="name" type="text">
+        <br>
+        <label for="location">Location</label>        
+        <select id="location">
+            <option value="Mountain View">Mountain View</option>
+        </select>
+        <br>
+        <label for="language">Language</label>
+        <select id="language">
+            <option value="JavaScript">JavaScript</option>
+        </select>
+        <br>
+        <label for="comment">Comment (optional)</label>
+        <br>
+        <textarea id="comment" cols="30" rows="5"></textarea>
+        <br>
+        <input type="submit">
+    </div>
+</body>
+</html>

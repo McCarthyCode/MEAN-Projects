@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>$Dojo</title>
+</head>
+<body>
+    <button id="buttonA">Button A</button>
+    <button id="buttonB">Button B</button>
+    <script>
+        function $Dojo(id) {
+            var result =  {
+                click: function(callback) {
+                    document.addEventListener("click", callback);
+                    return this;
+                },
+                hover: function(callback) {
+                    document.addEventListener("mouseover", callback);
+                    return this;
+                }
+            };
+
+            return result;
+        }
+
+        $Dojo("buttonA").click(function() { console.log("The button was clicked!"); });
+        $Dojo("buttonB").hover(function() { console.log("The button was hovered on!"); });
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+body {
+    background-color: #eeeeee;
+}
+.page {
+    background-color: white;
+    border: 1px solid #ced4da;
+    padding: 50px;
+}
+.prompt {
+    width: 50%;
+    margin: 200px auto;
+}
+.chat {
+    margin: 50px auto;
+}
+.chat-area {
+    width: 100%;
+    height: 600px;
+}

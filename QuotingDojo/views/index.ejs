@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>QuotingDojo</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <% if (errors) { %>
+            <% for (var i in errors) { %>
+        <div class="alert alert-danger mt-15px">
+            <%= errors[i] %>
+        </div>
+            <% } %>
+        <% } %>
+        <h1 class="mt-15px">Welcome to QuotingDojo</h1>
+        <form action="/quotes" method="POST">
+            <input type="text" name="name" placeholder="Your name" class="form-control mt-15px">
+            <textarea name="quote" placeholder="Your quote" rows="5" class="form-control mt-15px"></textarea>
+            <div class="flex-align mt-15px">
+                <input type="submit" value="Add my quote!" class="btn btn-primary">
+                <a href="/quotes" class="btn btn-default">Skip to quotes!</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

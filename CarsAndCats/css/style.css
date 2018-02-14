@@ -1,0 +1,17 @@
+* {
+    text-align: center;
+}
+img {
+    width: 400px;
+    height: 100%;
+    border: 1px solid black;
+}
+.container > * {
+    display: inline-block;
+}
+.cars img { 
+    display: block;
+}
+input {
+    margin-top: 10px;
+}

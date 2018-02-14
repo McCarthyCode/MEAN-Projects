@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wolf Pack</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' />
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="flex-align mt-15px">
+            <h1><%= wolf.name %></h1>
+            <div class="buttons mt-15px">
+                <a href="/" class="btn btn-primary">Go Back</a>
+                <a href="/wolves/edit/<%= wolf._id %>" class="btn btn-primary">Edit</a>
+                <form action="/wolves/destroy/<%= wolf._id %>" method="POST">
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+            </div>
+        </div>
+        <p class="mt-15px"><%= wolf.description %></p>
+    </div>
+</body>
+</html>

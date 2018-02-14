@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login/Registration</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' />
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <% if (typeof(success) !== "undefined") { %>
+        <div class="alert alert-success mt-15px">
+            <%= success %>
+        </div>
+        <% } %>
+        <% if (typeof(errors) !== "undefined") { %>
+            <% for (var i in errors) { %>
+        <div class="alert alert-danger mt-15px">
+            <%= errors[i] %>
+        </div>
+            <% } %>
+        <% } %>
+        <% if (typeof(extraErrors) !== "undefined") { %>
+            <% for (var i in extraErrors) { %>
+        <div class="alert alert-danger mt-15px">
+            <%= extraErrors[i] %>
+        </div>
+            <% } %>
+        <% } %>
+        <div class="row mt-15px">
+            <div class="col-md-6">
+                <h5>Register</h5>
+                <form action="/register" method="POST">
+                    <label for="birthday">Email</label>
+                    <input type="text" name="email" class="form-control">
+                    <label for="birthday">First Name</label>
+                    <input type="text" name="firstName" class="form-control">
+                    <label for="birthday">Last Name</label>
+                    <input type="text" name="lastName" class="form-control">
+                    <label for="birthday">Password</label>
+                    <input type="password" name="password" class="form-control">
+                    <label for="birthday">Confirm Password</label>
+                    <input type="password" name="passwordConfirm" class="form-control">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" name="birthday" class="form-control">
+                    <input type="submit" value="Register" class="btn btn-primary form-control mt-15px">
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h5>Log In</h5>
+                <form action="/login" method="POST">
+                    <label for="birthday">Email</label>
+                    <input type="text" name="email" class="form-control">
+                    <label for="birthday">Password</label>
+                    <input type="password" name="password" class="form-control">
+                    <input type="submit" value="Log In" class="btn btn-primary form-control mt-15px">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

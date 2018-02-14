@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game of Thrones</title>
+    <style>
+        .container {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .pics img {
+            width: 200px;
+            height: 100%;
+            cursor: pointer;
+        }
+        .details {
+            width: 712px;
+            border: 1px solid black;
+            margin: 50px auto;
+            padding: 50px;
+            text-align: left;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="pics">
+            <img src="img/stark.jpg" alt="stark" data-id="362">
+            <img src="img/targaryen.jpg" alt="targaryen" data-id="378">
+            <img src="img/lannister.jpg" alt="lannister" data-id="229">
+            <img src="img/baratheon.png" alt="baratheon" data-id="17">
+        </div>
+        <div class="details">
+            <h3>House Details</h3>
+            <p>Name: <span class="name"></span></p>
+            <p>Words: <span class="words"></span></p>
+            <p>Titles:</p>
+            <ul class="titles"></ul>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("img").click(function() {
+                var id = $(this).data("id");
+                $.get(`https://anapioficeandfire.com/api/houses/${id}`, data => {
+                    $(".name").text(data["name"]);
+                    $(".words").text(data["words"]);
+                    $(".titles").html("");
+                    for (var i in data["titles"]) {
+                        $(".titles").append(`<li>${data["titles"][i]}</li>`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

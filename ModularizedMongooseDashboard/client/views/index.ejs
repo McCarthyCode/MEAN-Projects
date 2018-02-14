@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wolf Pack</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' />
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="flex-align mt-15px">
+            <h1>Wolf Pack</h1>
+            <a href="/wolves/new" class="btn btn-default mt-15px">Add a Wolf</a>
+        </div>
+        <% for (var i in wolves) { %>
+        <div class="mt-15px">
+            <a href="/wolves/<%= wolves[i]._id %>"><%= wolves[i].name %></a>
+        </div>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+body {
+    background-color: #eeeeee;
+}
+.flex-align {
+    display: flex;
+    justify-content: space-between;
+}
+.mt-15px {
+    margin-top: 15px;
+}
+label {
+    margin: 0.5em 0 0 0;
+}
+input.form-control {
+    width: 300px !important;
+}
+/* .btn-default {
+    border: 1px solid #ced4da;
+} */

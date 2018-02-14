@@ -1,0 +1,21 @@
+.flex-align {
+    display: flex;
+    justify-content: space-between;
+}
+.mt-15px {
+    margin-top: 15px;
+}
+.btn-default {
+    border: 1px solid #ced4da;
+}
+nav {
+    background: #f7f7f7;
+    border-bottom: 1px solid #ced4da;
+}
+.messages {
+    margin-top: 68px;
+}
+.messages form,
+.comments {
+    margin-left: 60px;
+}
