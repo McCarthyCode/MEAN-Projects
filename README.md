@@ -1,1 +1,1 @@
-# MEAN Projects
+# DEPRACATED
